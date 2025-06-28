@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portafolio</title>
+    <link rel="stylesheet" href="styles/Portstyle.css" />
+</head>
+
+<body>
+    <div class="contenedor">
+        <!-- Panel lateral -->
+        <aside class="sidebar">
+            <img class="perfil" src="images/perfil.jpeg" alt="Foto de perfil">
+            <nav>
+                <ul>
+                    <li><a href="index.html">--Inicio-> 🏠</a></li>
+                    <li><a href="menuHab.html">--Habilidades-> ✨</a></li>
+                    <li><a href="contacto.html">--Contacto-> 📧</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <div class="goBack">
+            <a href="menuHab.html">
+                <img src="images/Botones/boton regresar.png" alt="Botón regresar" />
+            </a>
+        </div>
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <h2>Galería</h2>
+            <div class="gallery">
+                <img src="images/portafolioTrabajos/dibujoIglesiaVectores.png" alt="Dibujo en vectores de Iglesia" />
+                <img src="images/portafolioTrabajos/KenjiLogoAcomodado.jpg" alt="Logo de streamer" />
+                <img src="images/portafolioTrabajos/dibujarLuquidosNum1.png"
+                    alt="trabajo de dibujo de liquidos pequeños" />
+                <img src="images/portafolioTrabajos/feugo1.jpg" alt="Ilustración de fuego" />
+                <img src="images/portafolioTrabajos/AguaTronco.jpg"
+                    alt="trabajo de dibujo de texturas de madera, agua y nubes" />
+                <img src="images/portafolioTrabajos/dibujarLuquidosNum2.png"
+                    alt="trabajo de dibujo de liquidos más grandes" />
+
+                <img src="images/portafolioTrabajos/dibujoMetal2.png" alt="Dibujo de metal con reflejos 1" />
+                <img src="images/portafolioTrabajos/dibujoMetal3.jpg" alt="Dibujo de metal herramienta de cocina" />
+
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Lightbox container -->
+    <div id="lightbox">
+        <span class="close-btn">&times;</span>
+        <div class="lightbox-content">
+            <img src="" alt="Imagen ampliada" />
+            <p class="caption"></p>
+        </div>
+    </div>
+
+
+    <script>
+        const galleryImages = document.querySelectorAll('.gallery img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const closeBtn = lightbox.querySelector('.close-btn');
+        const caption = lightbox.querySelector('.caption');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                caption.textContent = img.alt;
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+            lightboxImg.src = '';
+            lightboxImg.alt = '';
+            caption.textContent = '';
+        });
+
+        lightbox.addEventListener('click', e => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+                lightboxImg.src = '';
+                lightboxImg.alt = '';
+                caption.textContent = '';
+            }
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === "Escape" && lightbox.style.display === 'flex') {
+                lightbox.style.display = 'none';
+                lightboxImg.src = '';
+                lightboxImg.alt = '';
+                caption.textContent = '';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

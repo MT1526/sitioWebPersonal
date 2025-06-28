@@ -1,0 +1,145 @@
+:root {
+    --color-primary: #0D0D0D;
+    --color-secundary: #F24405;
+    --color-background: #F23005;
+    --color-text: #F2F2F2;
+    --color-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-size: 30px;
+}
+
+.contenedor {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 2rem 1rem;
+    box-shadow: var(--color-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.perfil {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+    background-color: white;
+    object-fit: cover;
+}
+
+h2 {
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 36px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    width: 100%;
+}
+
+.sidebar nav ul li {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.sidebar nav ul li a:hover {
+    color: var(--color-secundary);
+}
+
+/* Contenido principal */
+.contenido {
+    flex: 1;
+    padding: 3rem;
+}
+
+.formulario-con-icono {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    flex: 1;
+}
+
+.formulario label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.formulario input,
+.formulario textarea {
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
+.formulario button {
+    padding: 0.7rem;
+    font-size: 1.1rem;
+    background-color: var(--color-secundary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.formulario button:hover {
+    background-color: #d63d04;
+}
+
+.icono-contacto img {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.icono-contacto img:hover {
+    transform: scale(1.1);
+}
+
+.lista-espera {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.lista-espera li {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+}

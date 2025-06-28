@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos</title>
+    <link rel="stylesheet" href="styles/contactStyle.css" />
+</head>
+<body>
+    <div class="contenedor">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <img class="perfil" src="images/perfil.jpeg" alt="Foto de perfil" />
+            <h2>Mi Portafolio</h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">--Inicio-> 🏠</a></li>
+                    <li><a href="menuHab.html">--Portafolio-> 📋</a></li>
+                    <li><a href="Habilidades.html">--Habilidades-> ✨</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="contenido">
+            <h1>Formulario de Contacto</h1>
+            <div class="formulario-con-icono">
+                <!-- Formulario -->
+                <form id="formContacto" class="formulario">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" required>
+
+                    <label for="correo">Correo:</label>
+                    <input type="email" id="correo" required>
+
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" rows="4" required></textarea>
+
+                    <button type="submit">Enviar</button>
+                </form>
+
+                <!-- Botón Instagram -->
+                <div class="icono-contacto">
+                    <a href="https://www.instagram.com/est_sarkis?igsh=MXJobHBpZ3JlcWxjNQ==" target="_blank">
+                        <img src="images/Botones/boton instagram.png" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+
+            <h2>Mensajes en espera</h2>
+            <ul id="listaEspera" class="lista-espera"></ul>
+        </main>
+    </div>
+
+    <script>
+        const form = document.getElementById('formContacto');
+        const lista = document.getElementById('listaEspera');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const correo = document.getElementById('correo').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            const nuevoItem = document.createElement('li');
+            nuevoItem.textContent = `🕒 ${nombre} (${correo}): ${mensaje}`;
+            lista.appendChild(nuevoItem);
+
+            form.reset();
+        });
+    </script>
+</body>
+</html>

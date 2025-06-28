@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu habilidades</title>
+    <link rel="stylesheet" href="styles/skillsStyle.css" />
+</head>
+
+<body>
+    <div class="contenedor">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <img class="perfil" src="images/perfil.jpeg" alt="Foto de perfil" />
+            <h2>Mi Portafolio</h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">--Inicio-> 🏠</a></li>
+                    <li><a href="menuHab.html">--Portafolio-> 📋</a></li>
+                    <li><a href="contacto.html">--Contacto-> 📧</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="contenido">
+            <h1>Mis Habilidades</h1>
+            <p></p>
+
+            <table class="tabla-habilidades">
+                <thead>
+                    <tr>
+                        <th>Habilidad</th>
+                        <th>Nivel 1%(😭)-100%(😎)</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>👨‍💻Python</td>
+                        <td>60%</td>
+                        <td>Técnica</td>
+                    </tr>
+                    <tr>
+                        <td>👨‍💻java</td>
+                        <td>80%</td>
+                        <td>Técnica</td>
+                    </tr>
+                    <tr>
+                        <td>💻Manejo de herramientas de diseño gráfico</td>
+                        <td>90%</td>
+                        <td>Técnica</td>
+                    </tr>
+                    <tr>
+                        <td>🎨Dibujo artístico y digital</td>
+                        <td>85%</td>
+                        <td>Técnica</td>
+                    </tr>
+                    <tr>
+                        <td>🖌Competencia en creación gráfica</td>
+                        <td>75%</td>
+                        <td>Técnica</td>
+                    </tr>
+                    <tr>
+                        <td>💪Adaptabilidad y flexibilidad</td>
+                        <td>75%</td>
+                        <td>Blanda</td>
+                    </tr>
+                    <tr>
+                        <td>🎖Liderazgo</td>
+                        <td>52%</td>
+                        <td>Blanda</td>
+                    </tr>
+                    <tr>
+                        <td>🧠Pensamiento crítico</td>
+                        <td>78%</td>
+                        <td>Blanda</td>
+                    </tr>
+                    <tr>
+                        <td>👥Trabajo en equipo</td>
+                        <td>75%</td>
+                        <td>Blanda</td>
+                    </tr>
+                    <tr>
+                        <td>📱Ilustración y diseño visual</td>
+                        <td>88%</td>
+                        <td>Blanda</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Aquí va el gráfico -->
+            <canvas id="habilidadesChart" width="800" height="200" style="margin-top: 30px;"></canvas>
+
+
+            
+
+
+        </main>
+    </div>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const filas = document.querySelectorAll('.tabla-habilidades tbody tr');
+
+        const habilidades = [];
+        const niveles = [];
+
+        filas.forEach(fila => {
+            const habilidad = fila.children[0].textContent.trim();
+            const nivelStr = fila.children[1].textContent.trim();
+            const nivel = parseInt(nivelStr.replace('%', ''), 10);
+
+            habilidades.push(habilidad);
+            niveles.push(nivel);
+        });
+
+        const ctx = document.getElementById('habilidadesChart').getContext('2d');
+        const habilidadesChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: habilidades,
+                datasets: [{
+                    label: 'Nivel (%)',
+                    data: niveles,
+                    backgroundColor: 'rgba(242, 68, 5, 0.7)',
+                    borderColor: 'rgba(242, 68, 5, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 10,
+                            callback: function (value) { return value + '%'; }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#0D0D0D'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
